@@ -4,8 +4,12 @@ import java.io.InputStream;
 import java.net.URL;
 import java.net.http.HttpRequest;
 import java.util.Scanner;
-
 import javax.net.ssl.HttpsURLConnection;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+
 /*This class is going to be used to use an api to get stock price data from the internet to my database, 
 this will be a very hard class for me to make*/
 public class StockAPI {
@@ -23,8 +27,10 @@ public class StockAPI {
         try (Scanner scanner = new Scanner(connection.getInputStream())) {
             while (scanner.hasNext() ) {
                     sb.append(scanner.nextLine());
-            }
-            }
+            } System.out.println(sb);
+            } 
+            String jsonstring = sb.toString();
+            
             this.apioutput = sb;
         } else {}
     } catch (Exception e) {
@@ -45,7 +51,37 @@ public static StockAPI createAPIcal(String stcoksymbole) {
     }
  return null;
  }
+/*gets a list of all possoble results when a costomer searches for a ticker */
+public static JSONArray getStockTickers(String tickerSearch) throws IOException {
+    try {
+    URL urobject = new URL(("https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=" + tickerSearch +"&apikey=WBW9HMYQ0S0FZ8MZ"));
+    HttpsURLConnection connection = (HttpsURLConnection) urobject.openConnection();
+    connection.setRequestMethod("GET");
+    int responseCode = connection.getResponseCode();
+        if (responseCode == HttpsURLConnection.HTTP_OK) {
+        StringBuilder sb = new StringBuilder();
+        try (Scanner scanner = new Scanner(connection.getInputStream())) {
+            while (scanner.hasNext() ) {
+                sb.append(scanner.nextLine());
+                }
+                String jsonstring = sb.toString();
+                JSONObject jsonResponse = new JSONObject(jsonstring);
+                JSONArray matches = jsonResponse.getJSONArray("bestMatches");
+                System.out.println(matches);
+                /*matches.optstring(key, N/A) to get key value par */
+                return matches;
+            }
+        } else {}
+        return stocksearchresults;
+    } catch (Exception e) {
+        System.out.println("api call was unsuccessful " + e);
+    }
+        return stocksearchresults;
 
-    public StringBuilder apioutput;
+
+}
+public StringBuilder apioutput;
+public static String tickerSearch;
+public static JSONArray stocksearchresults;
 
 }
