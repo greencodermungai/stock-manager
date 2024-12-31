@@ -7,12 +7,14 @@ public class Person {
       final String url = "jdbc:mysql://localhost:3306/portfoliomanagmentuserdatabase";
       final String DBusername = "root";
       final String password = "Qazxsw#781!";
+      /*this try statement estableshes a connection to a database */
       try {
          Connection DBconnection = DriverManager.getConnection(url, DBusername, password);
          String query = "SELECT * FROM person_information WHERE id = ?";
          PreparedStatement preparedStatement = DBconnection.prepareStatement(query);
          preparedStatement.setInt(1, id);
          ResultSet results = preparedStatement.executeQuery();
+         /*this block is to get the results of the quary call and assign them to varibles that the object will hold */
             if (results.next()) {
             this.first_name = results.getString(2);
             this.last_name = results.getString(3);
@@ -31,9 +33,25 @@ public class Person {
          Person person = new Person(id);
          return person; 
          } catch (Exception e) {
-         System.out.println("Exception caught during object creation: " + e.getMessage());
+         System.out.println("person was not found in database " + e.getMessage());
          }
       return null;
+      }
+
+      public static void  createAccount(String passkey, String username) throws SQLException {
+            final String url = "jdbc:mysql://localhost:3306/portfoliomanagmentuserdatabase";
+            final String DBusername = "root";
+            final String password = "Qazxsw#781!";
+            /*this try statement estableshes a connection to a database */
+            try {
+               Connection DBconnection = DriverManager.getConnection(url, DBusername, password);
+               String query = "?";
+               PreparedStatement preparedStatement = DBconnection.prepareStatement(query);
+               preparedStatement.setInt(1, id);
+               preparedStatement.executeQuery();
+            }  catch (SQLClientInfoException e) {
+               System.out.println("connection to DB could not be established");
+               }
       }
 
       /* get persons first name */

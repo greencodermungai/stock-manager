@@ -3,9 +3,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.net.http.HttpRequest;
+import java.util.ArrayList;
 import java.util.Scanner;
 import javax.net.ssl.HttpsURLConnection;
-
+import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -52,7 +53,7 @@ public static StockAPI createAPIcal(String stcoksymbole) {
  return null;
  }
 /*gets a list of all possoble results when a costomer searches for a ticker */
-public static JSONArray getStockTickers(String tickerSearch) throws IOException {
+public static ArrayList<JSONObject> getStockTickers(String tickerSearch) throws IOException {
     try {
     URL urobject = new URL(("https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=" + tickerSearch +"&apikey=WBW9HMYQ0S0FZ8MZ"));
     HttpsURLConnection connection = (HttpsURLConnection) urobject.openConnection();
@@ -67,9 +68,9 @@ public static JSONArray getStockTickers(String tickerSearch) throws IOException 
                 String jsonstring = sb.toString();
                 JSONObject jsonResponse = new JSONObject(jsonstring);
                 JSONArray matches = jsonResponse.getJSONArray("bestMatches");
-                System.out.println(matches);
-                /*matches.optstring(key, N/A) to get key value par */
-                return matches;
+                for (int i = 0; i < matches.length();i++)
+                    stocksearchresults.add(matches.getJSONObject(i));
+                return stocksearchresults;
             }
         } else {}
         return stocksearchresults;
@@ -82,6 +83,6 @@ public static JSONArray getStockTickers(String tickerSearch) throws IOException 
 }
 public StringBuilder apioutput;
 public static String tickerSearch;
-public static JSONArray stocksearchresults;
+public static ArrayList<JSONObject> stocksearchresults;
 
 }
