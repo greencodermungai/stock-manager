@@ -37,23 +37,60 @@ public class Person {
          }
       return null;
       }
-
-      public static void  createAccount(String passkey, String username) throws SQLException {
+      
+      /*maby this isnt the best way to do this but when some one tries to create an account this method adds there information to the database
+       * and returns the persons id so that i can use that id to make the person object
+       */
+      public static int  createAccount(String firstname, String lastname, String passkey, String username) throws SQLException {
             final String url = "jdbc:mysql://localhost:3306/portfoliomanagmentuserdatabase";
             final String DBusername = "root";
             final String password = "Qazxsw#781!";
-            /*this try statement estableshes a connection to a database */
+            /*this try statement estableshes a connection to a database
+             * security is weak here since im not checking the value of the variabls, will fix once i figure
+             * out how to insert variables into tables
+             */
             try {
                Connection DBconnection = DriverManager.getConnection(url, DBusername, password);
-               String query = "?";
+               String query = "INSERT INTO person_informaation (first_name, last_name, passkey, user_name) VALUES (?, ?, ?, ?)";
                PreparedStatement preparedStatement = DBconnection.prepareStatement(query);
-               preparedStatement.setInt(1, id);
+               preparedStatement.setString(2, firstname);
+               preparedStatement.setString(3, lastname);
+               preparedStatement.setString(4, passkey);
+               preparedStatement.setString(5, username);
                preparedStatement.executeQuery();
+               String query2 = "SELECT id  FROM person_information WHERE first_name = ? AND last_name = ? AND passkey = ? AND user_name = ?";
+               preparedStatement = DBconnection.prepareStatement(query2);
+               preparedStatement.setString(2, firstname);
+               preparedStatement.setString(3, lastname);
+               preparedStatement.setString(4, passkey);
+               preparedStatement.setString(5, username);
+               ResultSet results = preparedStatement.executeQuery();
+               return results.getInt(1);
             }  catch (SQLClientInfoException e) {
                System.out.println("connection to DB could not be established");
                }
+            return 0;
       }
 
+      /*this method is an existing user logging in */
+      public static int  login(String passkey, String username) throws SQLException {
+         final String url = "jdbc:mysql://localhost:3306/portfoliomanagmentuserdatabase";
+         final String DBusername = "root";
+         final String password = "Qazxsw#781!";
+         try {
+            Connection DBconnection = DriverManager.getConnection(url, DBusername, password);
+            String query2 = "SELECT id  FROM person_information WHERE passkey = ? AND user_name = ?";
+            PreparedStatement preparedStatement = DBconnection.prepareStatement(query2);
+            preparedStatement = DBconnection.prepareStatement(query2);
+            preparedStatement.setString(4, passkey);
+            preparedStatement.setString(5, username);
+            ResultSet results = preparedStatement.executeQuery();
+            return results.getInt(1);
+         }  catch (SQLClientInfoException e) {
+            System.out.println("connection to DB could not be established");
+            }
+         return 0;
+      }
       /* get persons first name */
       
       public String getFirstName() {
