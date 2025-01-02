@@ -1,0 +1,112 @@
+VBox {
+    -fx-background-color: #212121; 
+}
+
+.usernamefeild, .firstname, .lastname, .username {
+    -fx-background-color: #212121;
+    -fx-text-fill: grey; 
+    -fx-prompt-text-fill: rgba(255, 255, 255, 0.7); 
+    -fx-background-radius: 10; 
+    -fx-border-radius: 10; 
+    -fx-border-width: 1; 
+    -fx-border-color: transparent; 
+    -fx-padding: 5 10 5 10; 
+    -fx-effect: dropshadow(gaussian, rgba(0, 53, 70, 0.9), 10, 0.5, 0, 2); 
+    -fx-transition-duration: 0.2s; 
+}
+
+
+.usernamefeild:hover, .firstname:hover, .lastname:hover, .username:hover {
+    -fx-background-color: #282828; 
+    -fx-effect: dropshadow(gaussian, rgba(0, 53, 70, 0.9), 10, 0.3, 0, 5); 
+    -fx-translate-y: -3; 
+}
+
+
+.usernamefeild:focused, .firstname:focused, .lastname:focused, .username:focused {
+    -fx-background-color: #303030; 
+    -fx-effect: dropshadow(gaussian, rgba(0, 53, 70, 0.9), 10, 0.3, 0, 5); 
+    -fx-translate-y: -3; 
+}
+
+
+.passwordtextfeild, .password {
+    -fx-background-color: #212121; 
+    -fx-text-fill: grey;
+    -fx-prompt-text-fill: rgba(255, 255, 255, 0.7); 
+    -fx-background-radius: 10;
+    -fx-border-radius: 10; 
+    -fx-border-width: 1; 
+    -fx-border-color: transparent; 
+    -fx-padding: 5 10 5 10;
+    -fx-effect: dropshadow(gaussian, rgba(0, 53, 70, 0.9), 10, 0.5, 0, 2); 
+    -fx-transition-duration: 0.2s;
+}
+
+
+.passwordtextfeild:hover, .password:hover {
+    -fx-background-color: #282828; 
+    -fx-effect: dropshadow(gaussian, rgba(0, 53, 70, 0.9), 10, 0.3, 0, 5);
+    -fx-translate-y: -1; 
+}
+
+
+.passwordtextfeild:focused, .password:focused {
+    -fx-background-color: #303030; 
+    -fx-effect: dropshadow(gaussian, rgba(0, 53, 70, 0.9), 10, 0.3, 0, 5); 
+    -fx-translate-y: -1; 
+}
+
+
+.createaccount {
+    -fx-background-color: #212121; 
+    -fx-text-fill: grey;
+    -fx-background-radius: 10; 
+    -fx-border-radius: 10; 
+    -fx-border-width: 1; 
+    -fx-border-color: transparent; 
+    -fx-padding: 5 10 5 10; 
+    -fx-effect: dropshadow(gaussian, rgba(0, 53, 70, 0.9), 10, 0.5, 0, 2); 
+    -fx-transition: all 0.2s ease;
+}
+
+
+.createaccount:hover {
+    -fx-background-color: #282828; 
+    -fx-effect: dropshadow(gaussian, rgba(0, 53, 70, 0.9), 10, 0.3, 0, 5);
+    -fx-translate-y: -3; 
+}
+
+
+.createaccount:focused {
+    -fx-background-color: #303030; 
+    -fx-effect: dropshadow(gaussian, rgba(0, 53, 70, 0.9), 10, 0.3, 0, 5);
+    -fx-translate-y: -3; 
+}
+
+
+.returnButton {
+    -fx-background-color: #212121;
+    -fx-text-fill: grey; 
+    -fx-background-radius: 10;
+    -fx-border-radius: 10; 
+    -fx-border-width: 1; 
+    -fx-border-color: transparent;
+    -fx-padding: 5 10 5 10; 
+    -fx-effect: dropshadow(gaussian, rgba(0, 53, 70, 0.9), 10, 0.5, 0, 2);
+    -fx-transition: all 0.2s ease;
+}
+
+
+.returnButton:hover {
+    -fx-background-color: #282828; 
+    -fx-effect: dropshadow(gaussian, rgba(0, 53, 70, 0.9), 10, 0.3, 0, 5); 
+    -fx-translate-y: -3;
+}
+
+
+.returnButton:focused {
+    -fx-background-color: #303030; 
+    -fx-effect: dropshadow(gaussian, rgba(0, 53, 70, 0.9), 10, 0.3, 0, 5); 
+    -fx-translate-y: -3; 
+}

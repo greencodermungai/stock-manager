@@ -1,0 +1,81 @@
+/* login.css */
+
+VBox {
+    -fx-background-color: #212121; 
+}
+.usernamefeild {
+    -fx-background-color: #212121;
+    -fx-text-fill: grey;
+    -fx-prompt-text-fill: rgba(255, 255, 255, 0.7);
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-border-color: transparent;
+    -fx-padding: 5 10 5 10;
+    -fx-effect: dropshadow(gaussian, rgba(0, 70, 0, 0.3), 10, 0.5, 0, 2);
+    -fx-transition-duration: 0.2s;
+}
+
+.usernamefeild:hover {
+    -fx-background-color: #282828;
+    -fx-effect: dropshadow(gaussian, rgba(0, 70, 0, 0.9), 10, 0.3, 0, 5);
+    -fx-translate-y: -3;
+}
+
+.usernamefeild:focused {
+    -fx-background-color: #303030;
+    -fx-effect: dropshadow(gaussian, rgba(0, 70, 0, 0.9), 10, 0.3, 0, 5);
+    -fx-translate-y: -3;
+}
+
+.passwordtextfeild {
+    -fx-background-color: #212121;
+    -fx-text-fill: grey;
+    -fx-prompt-text-fill: rgba(255, 255, 255, 0.7);
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-width: 1;
+    -fx-border-color: transparent;
+    -fx-padding: 5 10 5 10;
+    -fx-effect: dropshadow(gaussian, rgba(0, 70, 0, 0.3), 10, 0.5, 0, 2);
+    -fx-transition-duration: 0.2s;
+}
+
+.passwordtextfeild:hover {
+    -fx-background-color: #282828;
+    -fx-effect: dropshadow(gaussian, rgba(0, 70, 0, 0.9), 10, 0.3, 0, 5);
+    -fx-translate-y: -1;
+}
+
+.passwordtextfeild:focused {
+    -fx-background-color: #303030;
+    -fx-effect: dropshadow(gaussian, rgba(0, 70, 0, 0.9), 10, 0.3, 0, 5);
+    -fx-translate-y: -1;
+}
+
+.loginButton, .sighnupbutton {
+    -fx-background-color: #212121; 
+    -fx-text-fill: grey; 
+    -fx-background-radius: 10; 
+    -fx-border-radius: 10;
+    -fx-border-width: 1; 
+    -fx-border-color: transparent; 
+    -fx-padding: 5 10 5 10; 
+    -fx-effect: dropshadow(gaussian, rgba(0, 70, 0, 0.3), 10, 0.5, 0, 2); 
+    -fx-transition: all 0.2s ease; 
+}
+
+.loginButton:hover, .sighnupbutton:hover {
+    -fx-background-color: #282828; 
+    -fx-effect: dropshadow(gaussian, rgba(0, 70, 0, 0.9), 10, 0.3, 0, 5);
+    -fx-translate-y: -3; 
+}
+
+.loginButton:focused, .sighnupbutton:focused {
+    -fx-background-color: #303030; 
+    -fx-effect: dropshadow(gaussian, rgba(0, 70, 0, 0.9), 10, 0.3, 0, 5); 
+    -fx-translate-y: -3; 
+}
+
+
+

@@ -52,6 +52,7 @@ public static StockAPI createAPIcal(String stcoksymbole) {
     }
  return null;
  }
+ 
 /*gets a list of all possoble results when a costomer searches for a ticker */
 public static ArrayList<JSONObject> getStockTickers(String tickerSearch) throws IOException {
     try {
@@ -70,6 +71,7 @@ public static ArrayList<JSONObject> getStockTickers(String tickerSearch) throws 
                 JSONArray matches = jsonResponse.getJSONArray("bestMatches");
                 for (int i = 0; i < matches.length();i++)
                     stocksearchresults.add(matches.getJSONObject(i));
+                    /*add getSting("name") to get the name of the ticker */
                 return stocksearchresults;
             }
         } else {}
