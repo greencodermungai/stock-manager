@@ -48,9 +48,9 @@
                <children>
                   <Pane layoutX="51.0" layoutY="26.0" prefHeight="277.0" prefWidth="166.0" styleClass="nestedpane">
                      <children>
-                        <PasswordField alignment="CENTER" layoutY="61.0" promptText="Password" styleClass="passwordtextfeild" />
-                        <TextField alignment="CENTER" layoutY="14.0" promptText="Username" styleClass="usernamefeild" />
-                        <Button layoutX="59.0" layoutY="126.0" mnemonicParsing="false" styleClass="loginButton" text="Login" />
+                        <PasswordField fx:id="passwordField"  alignment="CENTER" layoutY="61.0" promptText="Password" styleClass="passwordtextfeild" />
+                        <TextField fx:id="username" alignment="CENTER" layoutY="14.0" promptText="Username" styleClass="usernamefeild" />
+                        <Button  layoutX="59.0" layoutY="126.0" mnemonicParsing="false" styleClass="loginButton" text="Login" onAction="#Loginperson"/>
                         <Button layoutX="51.0" layoutY="237.0" mnemonicParsing="false" styleClass="sighnupbutton" text="SighnUp" textAlignment="CENTER" onAction="#switchToSighnup"/>
                         <Label layoutX="-27.0" layoutY="190.0" text="Dont have an account yet? sighn up here" textFill="#575757"/>
                      </children>

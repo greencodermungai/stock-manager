@@ -11,11 +11,11 @@
   <children>
     <AnchorPane maxHeight="800.0" maxWidth="1000.0" minHeight="800.0" minWidth="1000.0" prefHeight="420.0" prefWidth="657.0" VBox.vgrow="ALWAYS">
          <children>
-            <TextField layoutX="420.0" layoutY="230.0" promptText="first name" styleClass="firstname" />
-            <TextField layoutX="420.0" layoutY="312.0" promptText="Last name" styleClass="lastname" />
-            <TextField layoutX="420.0" layoutY="494.0" promptText="User name" styleClass="username" />
-            <Button layoutX="448.0" layoutY="568.0" mnemonicParsing="false" styleClass="createaccount" text="Create Account" />
-            <PasswordField layoutX="420.0" layoutY="400.0" promptText="Password" styleClass="password" />
+            <TextField fx:id="first_name" layoutX="420.0" layoutY="230.0" promptText="first name" styleClass="firstname" />
+            <TextField fx:id="last_name" layoutX="420.0" layoutY="312.0" promptText="Last name" styleClass="lastname" />
+            <TextField fx:id="user_name" layoutX="420.0" layoutY="494.0" promptText="User name" styleClass="username" />
+            <Button layoutX="448.0" layoutY="568.0" mnemonicParsing="false" styleClass="createaccount" text="Create Account" onAction="#sighnupUser"/>
+            <PasswordField fx:id="passwordField2" layoutX="420.0" layoutY="400.0" promptText="Password" styleClass="password" />
             <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" styleClass="returnButton" text="return" onAction="#returnToLogin"/>
             <Label layoutX="402.0" layoutY="364.0" text="password must be 10 characters long" />
             <Label layoutX="398.0" layoutY="457.0" text="User name must be 12 characters long" />

@@ -51,25 +51,28 @@ public class Person {
              */
             try {
                Connection DBconnection = DriverManager.getConnection(url, DBusername, password);
-               String query = "INSERT INTO person_informaation (first_name, last_name, passkey, user_name) VALUES (?, ?, ?, ?)";
+               String query = "INSERT INTO person_information (first_name, last_name, passkey, user_name) VALUES (?, ?, ?, ?)";
                PreparedStatement preparedStatement = DBconnection.prepareStatement(query);
-               preparedStatement.setString(2, firstname);
-               preparedStatement.setString(3, lastname);
-               preparedStatement.setString(4, passkey);
-               preparedStatement.setString(5, username);
-               preparedStatement.executeQuery();
+               preparedStatement.setString(1, firstname);
+               preparedStatement.setString(2, lastname);
+               preparedStatement.setString(3, passkey);
+               preparedStatement.setString(4, username);
+               preparedStatement.executeUpdate();
                String query2 = "SELECT id  FROM person_information WHERE first_name = ? AND last_name = ? AND passkey = ? AND user_name = ?";
-               preparedStatement = DBconnection.prepareStatement(query2);
-               preparedStatement.setString(2, firstname);
-               preparedStatement.setString(3, lastname);
-               preparedStatement.setString(4, passkey);
-               preparedStatement.setString(5, username);
-               ResultSet results = preparedStatement.executeQuery();
-               return results.getInt(1);
-            }  catch (SQLClientInfoException e) {
+               PreparedStatement preparedStatement2 = DBconnection.prepareStatement(query2);
+               preparedStatement2.setString(1, firstname);
+               preparedStatement2.setString(2, lastname);
+               preparedStatement2.setString(3, passkey);
+               preparedStatement2.setString(4, username);
+               ResultSet results = preparedStatement2.executeQuery();
+               if (results.next()) {
+                  return results.getInt("id"); 
+                  } else {System.out.println("doesnt have next ");}
+                  return results.getInt("id");
+            }  catch (SQLException e) {
                System.out.println("connection to DB could not be established");
                }
-            return 0;
+            return -1;
       }
 
       /*this method is an existing user logging in */
@@ -82,15 +85,18 @@ public class Person {
             String query2 = "SELECT id  FROM person_information WHERE passkey = ? AND user_name = ?";
             PreparedStatement preparedStatement = DBconnection.prepareStatement(query2);
             preparedStatement = DBconnection.prepareStatement(query2);
-            preparedStatement.setString(4, passkey);
-            preparedStatement.setString(5, username);
+            preparedStatement.setString(1, passkey);
+            preparedStatement.setString(2, username);
             ResultSet results = preparedStatement.executeQuery();
-            return results.getInt(1);
-         }  catch (SQLClientInfoException e) {
+            if (results.next()) {
+               return results.getInt("id"); 
+               } else {System.out.println("doesnt have next ");}
+               return results.getInt("id");
+         }  catch (SQLException e) {
             System.out.println("connection to DB could not be established");
             }
-         return 0;
-      }
+         return -1;
+   }
       /* get persons first name */
       
       public String getFirstName() {
@@ -111,5 +117,6 @@ public static int id;
 public String first_name;
 public String last_name;
 public String passkey;
-public String user_name; 
+public String user_name;
+public static Person person;
 }
