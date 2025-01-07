@@ -32,7 +32,7 @@ public class StockAPI {
             } 
             String jsonstring = sb.toString();
             
-            this.apioutput = sb;
+            this.apioutput = jsonstring;
         } else {}
     } catch (Exception e) {
         System.out.println("api call was unsuccessful");
@@ -52,6 +52,10 @@ public static StockAPI createAPIcal(String stcoksymbole) {
     }
  return null;
  }
+
+public String results() {
+    return this.apioutput;
+}
  
 /*gets a list of all possoble results when a costomer searches for a ticker */
 public static ArrayList<JSONObject> getStockTickers(String tickerSearch) throws IOException {
@@ -71,11 +75,9 @@ public static ArrayList<JSONObject> getStockTickers(String tickerSearch) throws 
                 JSONArray matches = jsonResponse.getJSONArray("bestMatches");
                 for (int i = 0; i < matches.length();i++)
                     stocksearchresults.add(matches.getJSONObject(i));
-                    /*add getSting("name") to get the name of the ticker */
                 return stocksearchresults;
             }
-        } else {}
-        return stocksearchresults;
+        } 
     } catch (Exception e) {
         System.out.println("api call was unsuccessful " + e);
     }
@@ -83,8 +85,9 @@ public static ArrayList<JSONObject> getStockTickers(String tickerSearch) throws 
 
 
 }
-public StringBuilder apioutput;
+public String apioutput;
 public static String tickerSearch;
-public static ArrayList<JSONObject> stocksearchresults;
+public static ArrayList<JSONObject> stocksearchresults = new ArrayList<>();
+
 
 }

@@ -7,19 +7,28 @@ import java.sql.SQLException;
 import com.example.backend.Person;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class AccessController {
      /*this methid switches sceens when the sighn up button is pushes, from login page to sighnup page */
     @FXML
     private void switchToSighnup() throws IOException {
-        App.setRoot("Sighnup");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Sighnup.fxml"));
+        Scene scene2 = new Scene(loader.load());
+        Stage stage = (Stage) username.getScene().getWindow();
+        stage.setScene(scene2);
     }
     /*this method is used to go back to the login menu from the sighnup menu */
     @FXML
     private void returnToLogin() throws IOException {
-        App.setRoot("login");
+      FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
+      Scene scene2 = new Scene(loader.load());
+      Stage stage = (Stage) user_name.getScene().getWindow();
+      stage.setScene(scene2);
    }
 
    /*this method invokes the action of putting costomer information into a database and creating the person object
@@ -30,7 +39,10 @@ public class AccessController {
       try {
         int id = Person.createAccount(first_name.getText(), last_name.getText(), passwordField2.getText(), user_name.getText());
         if (id > 0) {
-          App.setRoot("Mainpage");
+          FXMLLoader loader = new FXMLLoader(getClass().getResource("Mainpage.fxml"));
+        Scene scene2 = new Scene(loader.load());
+        Stage stage = (Stage) user_name.getScene().getWindow();
+        stage.setScene(scene2);
           Person.person = Person.createPerson(id);
         } else {System.out.println("person not found");}
       } catch (SQLClientInfoException e) {
@@ -46,7 +58,10 @@ public class AccessController {
     try {
       int id =  Person.login(passwordField.getText(), username.getText());
       if (id > 0) {
-        App.setRoot("Mainpage");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Mainpage.fxml"));
+        Scene scene2 = new Scene(loader.load());
+        Stage stage = (Stage) username.getScene().getWindow();
+        stage.setScene(scene2);
         Person.person = Person.createPerson(id);
       } else {System.out.println("person not found");}
     } catch (SQLException e) {
