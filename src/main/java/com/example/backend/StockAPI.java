@@ -75,6 +75,12 @@ public static ArrayList<JSONObject> getStockTickers(String tickerSearch) throws 
                 JSONArray matches = jsonResponse.getJSONArray("bestMatches");
                 for (int i = 0; i < matches.length();i++)
                     stocksearchresults.add(matches.getJSONObject(i));
+                    for (String key : jsonResponse.keySet()) {
+                        if (jsonResponse.has("Information")) {
+                            System.out.println("Information: " + jsonResponse.getString("Information"));
+                        }
+                        System.out.println("Key: " + key);
+                    }
                 return stocksearchresults;
             }
         } 

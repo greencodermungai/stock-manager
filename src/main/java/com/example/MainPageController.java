@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -30,24 +31,23 @@ public class MainPageController {
     @FXML
     private Button searchbutton;
 
+    @FXML 
+    private TextField searchfeild;
+
     @FXML
     public void getSearchResults() {
         try {
-            // Load Scene 2
             FXMLLoader loader = new FXMLLoader(getClass().getResource("searchresults.fxml"));
             Scene scene2 = new Scene(loader.load());
-
-            // Get Scene2Controller to update the button text
             searchresultsController scene2Controller = loader.getController();
-            scene2Controller.setButtonText();
-            
-        
-            // Switch to Scene 2
+            scene2Controller.setButtonText(searchfeild.getText());
             Stage stage = (Stage) searchbutton.getScene().getWindow();
             stage.setScene(scene2);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+
   }
 

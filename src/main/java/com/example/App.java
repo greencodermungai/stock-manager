@@ -33,7 +33,7 @@ public class App extends Application {
     }
 
     public static void main(String[] args) throws IOException {
-        
+        System.out.println(StockAPI.getStockTickers("AAPL").get(1).getString("2. name"));
         launch();
     }
 }
